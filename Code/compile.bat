@@ -1,1 +1,1 @@
-nasm boot_sect.asm -f bin -o boot_sect.bin
+C:\Users\stsim\AppData\Local\bin\NASM\nasm boot_sect.asm -f bin -o boot_sect.bin

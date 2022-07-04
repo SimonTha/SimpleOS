@@ -1,25 +1,25 @@
 mov ah, 0x0e
-mov al, "H"
+mov al, "A"
+int 0x10
+mov al, "l"
 int 0x10
 mov al, "e"
 int 0x10
-mov al, "l"
-int 0x10
-mov al, "l"
-int 0x10
-mov al, "o"
+mov al, "n"
 int 0x10
 mov al, " "
 int 0x10
-mov al, "W"
+mov al, "s"
 int 0x10
-mov al, "o"
+mov al, "t"
 int 0x10
-mov al, "r"
+mov al, "i"
 int 0x10
-mov al, "l"
+mov al, "n"
 int 0x10
-mov al, "d"
+mov al, "k"
+int 0x10
+mov al, "t"
 int 0x10
 jmp $
 
