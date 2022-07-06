@@ -1,13 +1,13 @@
-printStr:
+printStr16:
   pusha
   mov ah, 0x0e
   mov al, [bx]
-  loop:
+  .loop:
     int 0x10
     add bx, 1
     mov al, [bx]
     cmp al, 0
-    jne loop
+    jne .loop
   popa
   ret
 
@@ -43,7 +43,7 @@ set_letter:
 
 print_hex_done:
   mov bx, HEX_OUT   ; print the string pointed to by bx
-  call printStr
+  call printStr16
 
   popa              ; pop the initial register values back from the stack
   ret               ; return the function

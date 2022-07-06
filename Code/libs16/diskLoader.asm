@@ -21,8 +21,11 @@ readDisk:
 
 diskError:
   mov bx, errorMsg
-  call printStr
+  call printStr16
   jmp $
 
 errorMsg:
   db "ERROR: Not able to read Disk", 0
+
+BootDrive:
+  db 0
