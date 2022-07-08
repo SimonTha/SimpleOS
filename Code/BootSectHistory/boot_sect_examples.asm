@@ -1,21 +1,13 @@
-[org 0x7c00]            ; Specifie address for orientation
+[org 0x7c00]            ;Specifie address for orientation
 kernelPos equ 0x1000
 
-mov [BootDrive], dl     ; Save boot drive in BootDrive
+mov [BootDrive], dl     ;Save boot drive in BootDrive
 
 mov bp, 0x9000
-mov sp, bp              ; Sets the basepointer of the Stack
+mov sp, bp              ;Sets the basepointer of the Stack
 
 mov bx, RMMsg
-call printStr16         ; Print it as String for fun :)
-
-mov bx, 0x8000       ; bx is the location where read disk gets stored  | IMPORTANT: change location because it could intervent with video memory
-mov dh, 5              ; dh is the number how many sectors should get read | 1 sector is 512 bytes
-mov dl, [BootDrive]     ; dl is which disk it should read
-call readDisk           ; Test code for showing disk reading
-
-mov bx, 0x8000
-call printStr16         ; Prove that disk got read and print it
+call printStr16         ;Print it as String for fun :)
 
 call switchTo32         ; Permanently switching to 32 Bit Protected Mode
 
@@ -36,6 +28,7 @@ start32:
   mov ebx, PMMsg
   call printStr32 ; Use our 32 - bit print routine.
 
+  call kernelPos
   jmp $                 ;Loop forever
 
 ;Global Variables
@@ -50,6 +43,6 @@ KernelLoadingMsg:
 times 510-($-$$) db 0     ; Fill the Bootsector with 0's
 dw 0xaa55                 ;"Magic Number": End of Bootsector
 
-db "This message is outside the DISK",0
+; db "This message is outside the DISK",0
 ; times 256 dw 0xdada       ;Store data outside the Bootsector for testing and bootstrapping
 ; times 256 dw 0xface       ;**
